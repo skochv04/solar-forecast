@@ -27,6 +27,10 @@ public class ForecastService {
         this.restTemplate = restTemplate;
     }
 
+    public double convertSecondsToHours(double seconds) {
+        return seconds / 3600.0;
+    }
+
     public OpenMeteoResponse getWeatherData(double latitude, double longitude) {
 
         String apiUrl = String.format(Locale.US,
@@ -49,7 +53,7 @@ public class ForecastService {
     }
 
     public double calculateEstimatedEnergy(double exposureTimeSeconds){
-        double exposureTimeHours = exposureTimeSeconds / 3600.0;
+        double exposureTimeHours = convertSecondsToHours(exposureTimeSeconds);
         double estimatedEnergy = SOLAR_SYSTEM_POWER * exposureTimeHours * PANEL_EFFICIENCY;
         return Math.round(estimatedEnergy * 100.0) / 100.0;
     }
@@ -134,16 +138,20 @@ public class ForecastService {
         if (daily == null
                 || isEmpty(daily.getTemperature_2m_min())
                 || isEmpty(daily.getTemperature_2m_max())
-                || isEmpty(daily.getPrecipitation_probability_max())) {
+                || isEmpty(daily.getPrecipitation_probability_max())
+                || isEmpty(daily.getSunshine_duration())) {
             throw new IllegalArgumentException("Incomplete daily summary data from Open-Meteo API");
         }
 
         List<Double> minTemps = daily.getTemperature_2m_min();
         List<Double> maxTemps = daily.getTemperature_2m_max();
         List<Integer> precipitationProbabilities = daily.getPrecipitation_probability_max();
+        List<Double> sunshineDurations = daily.getSunshine_duration();
+        sunshineDurations.replaceAll(this::convertSecondsToHours);
 
         double minTemperaturePerWeek = calculateAverage(minTemps);
         double maxTemperaturePerWeek = calculateAverage(maxTemps);
+        double averageSunExposurePerWeek = calculateAverage(sunshineDurations);
 
         OpenMeteoResponse.Hourly hourly = weatherData.getHourly();
         List<Double> pressure_msl = hourly.getPressure_msl();
@@ -155,6 +163,7 @@ public class ForecastService {
                 minTemperaturePerWeek,
                 maxTemperaturePerWeek,
                 averagePressurePerWeek,
+                averageSunExposurePerWeek,
                 weatherSummary
         );
     }
