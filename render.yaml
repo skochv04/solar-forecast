@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: spring-backend
+    env: docker
+    plan: free
+    rootDir: ./backend
