@@ -21,16 +21,20 @@
   --color-gray: #656565;
   --color-light-gray: #C1C1C1;
   --color-white: #FEFEFE;
+  --color-active: #F3F7FF;
   --color-shadow: rgba(0, 0, 0, 0.05);
+  --shadow-card: 0px 1px 5px 1px rgba(197, 197, 197, 0.25);
 }
 
 :root[data-theme='dark'] {
   --color-background: #1F1F1F;
-  --color-text-black: #f1f1f1;
+  --color-text-black: #dddddd;
   --color-gray: #CCCCCC;
   --color-light-gray: #444444;
-  --color-white: #1F1F1F;
+  --color-white: #252525;
+  --color-active: #353535;
   --color-shadow: rgba(255, 255, 255, 0.05);
+  --shadow-card: 0px 1px 5px 1px rgba(57, 57, 57, 0.25);
 }
 
 * {
@@ -49,6 +53,11 @@ h1{
   color: var(--color-text-black);
   font-size: var(--font-size-heading);
   font-weight: 600
+}
+
+p{
+  color: var(--color-text-black);
+  font-size: var(--font-size-secondary);
 }
 
 .weather-label {

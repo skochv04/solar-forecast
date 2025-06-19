@@ -97,7 +97,7 @@ export default function ForecastPage() {
                                 </div>
                             )
                         ) : (
-                            <div>No data yet</div>
+                            <p>No data yet</p>
                         )}
                     </div>
                 </div>
