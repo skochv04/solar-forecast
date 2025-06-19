@@ -11,7 +11,7 @@ import rain from '../../assets/icons/rain.svg';
 import snow from '../../assets/icons/snow.svg';
 import cloudy from '../../assets/icons/cloudy.svg';
 import thunderstorms from '../../assets/icons/thunderstorms.svg';
-import thunderstormsRain from '../../assets/icons/thunderstorms-rain.svg';
+import thunderstormsRain from '../../assets/icons/thunderstormsRain.svg';
 
 import './DailyCard.css';
 
