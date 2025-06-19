@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/static/css/main.c1114f7a.css",
+    "main.js": "/static/js/main.ed72909f.js",
+    "static/js/453.8ab44547.chunk.js": "/static/js/453.8ab44547.chunk.js",
+    "static/media/pressure.svg": "/static/media/pressure.1f56c22a396bcdd695baf362f034dcca.svg",
+    "static/media/withoutPrecipitation.svg": "/static/media/withoutPrecipitation.303a13dad3b55c2f9ade9bf026b5d98e.svg",
+    "static/media/withPrecipitation.svg": "/static/media/withPrecipitation.0db7af6ad36f3f51af0231952482be23.svg",
+    "static/media/temperature.svg": "/static/media/temperature.b70bee2b3ea4c1927d264cb710b11179.svg",
+    "static/media/sleet.svg": "/static/media/sleet.132391bc69732cc2373c19607c087ec0.svg",
+    "static/media/exposure.svg": "/static/media/exposure.11872b375fb2cd9790409c76d887c1f8.svg",
+    "static/media/snow.svg": "/static/media/snow.ef3313dae88a5d1dbccb8653e2206da0.svg",
+    "static/media/thunderstormsRain.svg": "/static/media/thunderstormsRain.54936cd75ec331bd16bcd66a7d05dedb.svg",
+    "static/media/rain.svg": "/static/media/rain.6f43169e2db3a96adc41053a0bbb9146.svg",
+    "static/media/drizzle.svg": "/static/media/drizzle.ae14aba413100d921c3c6cfbb5251684.svg",
+    "static/media/overcastDay.svg": "/static/media/overcastDay.8632010bebb9d500d568b01d3374be24.svg",
+    "static/media/darkMode.svg": "/static/media/darkMode.b435fa106a4a4159026a46779f41b2eb.svg",
+    "static/media/fog.svg": "/static/media/fog.0103d56b08041516e25cdde71d86fa4c.svg",
+    "static/media/thunderstorms.svg": "/static/media/thunderstorms.639df886958499f6f0fc32c22b8e2b3d.svg",
+    "static/media/clearDay.svg": "/static/media/clearDay.54288da67b71b4b19483d373d683257f.svg",
+    "static/media/cloudy.svg": "/static/media/cloudy.f6e6108ec3b4605bda2aca61f011e8e8.svg",
+    "index.html": "/index.html",
+    "static/media/lightMode.svg": "/static/media/lightMode.1be6870f894fe9da1b67e063264a3b38.svg",
+    "main.c1114f7a.css.map": "/static/css/main.c1114f7a.css.map",
+    "main.ed72909f.js.map": "/static/js/main.ed72909f.js.map",
+    "453.8ab44547.chunk.js.map": "/static/js/453.8ab44547.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c1114f7a.css",
+    "static/js/main.ed72909f.js"
+  ]
+}
