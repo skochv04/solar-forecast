@@ -96,7 +96,7 @@ export default function ForecastPage() {
                                 </div>
                             )
                         ) : (
-                            <p>No data yet</p>
+                            <p>No data yet. It may take a few minutes to establish the first connection.</p>
                         )}
                     </div>
                 </div>
@@ -116,7 +116,7 @@ export default function ForecastPage() {
                                 />
                             ))
                         ) : (
-                            <p>No data yet</p>
+                            <p>No data yet. It may take a few minutes to establish the first connection.</p>
                         )}
                     </div>
 
