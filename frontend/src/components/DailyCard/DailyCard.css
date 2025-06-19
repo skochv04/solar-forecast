@@ -22,3 +22,19 @@
     align-items: center;
     gap: 12px;
 }
+
+.daily-card .weather-icon-box {
+    background-color: var(--color-white);
+}
+
+[data-theme='light'] .daily-card .weather-icon-box {
+    background-color: var(--color-white);
+}
+
+[data-theme='dark'] .daily-card .weather-icon-box {
+    background-color: var(--color-active);
+}
+.daily-card .weather-icon {
+    width: 45px;
+    height: 45px;
+}

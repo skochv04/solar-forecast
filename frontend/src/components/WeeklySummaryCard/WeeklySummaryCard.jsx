@@ -27,7 +27,7 @@ function WeeklySummaryCard({ minTemp, maxTemp, pressure, sunExposure, summary })
             <div className="weather-column">
                 <div className="weather-item">
                     <WeatherIcon src={temperatureIcon} />
-                    <WeatherInfo label="Temperature Range" value={`${minTemp} ° - ${maxTemp} °`} />
+                    <WeatherInfo label="Temperature Range" value={`${minTemp}° / ${maxTemp}°`} />
                 </div>
                 <div className="weather-item">
                     <WeatherIcon src={summary === 'WITH_PRECIPITATION' ? withPrecipitationIcon : withoutPrecipitationIcon} />

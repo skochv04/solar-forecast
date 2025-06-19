@@ -1,4 +1,5 @@
 import React from 'react';
+import './WeatherInfo.css';
 
 function WeatherInfo({ label, value, reverse = false }) {
     return (

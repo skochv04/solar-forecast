@@ -113,6 +113,7 @@ export default function ForecastPage() {
                                     energy={day.estimatedEnergy}
                                     minTemp={day.minTemperaturePerDay}
                                     maxTemp={day.maxTemperaturePerDay}
+                                    weatherCode={day.weatherCode}
                                 />
                             ))
                         ) : (

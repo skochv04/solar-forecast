@@ -1,4 +1,5 @@
 import React from 'react';
+import './WeatherIcon.css';
 
 function WeatherIcon({ src, alt = 'weather icon' }) {
     return (
