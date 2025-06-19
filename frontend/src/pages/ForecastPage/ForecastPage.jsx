@@ -44,7 +44,6 @@ export default function ForecastPage() {
         fetch(url)
             .then((res) => res.json())
             .then((data) => {
-                console.log("Daily forecast data:", data);
                 setDailyForecast(data);
             })
             .catch((err) => {
