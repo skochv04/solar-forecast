@@ -24,7 +24,7 @@ export default function ForecastPage() {
     const [forecast, setForecast] = useState(null);
     const [coords, setCoords] = useState(null);
     const fetchForecast = (lat, lon) => {
-        const url = `${process.env.REACT_APP_API_URL}api/forecast/weekly?latitude=${lat}&longitude=${lon}`;
+        const url = `${process.env.REACT_APP_API_URL}api/forecast/weekly/summary?latitude=${lat}&longitude=${lon}`;
         fetch(url)
             .then((res) => res.json())
             .then((data) => {
@@ -61,12 +61,23 @@ export default function ForecastPage() {
 
                     <div className="summary-block">
                         <h1>Weekly weather summary</h1>
-                        <WeeklySummaryCard></WeeklySummaryCard>
+                        {forecast && !forecast.error ? (
+                            <WeeklySummaryCard
+                                minTemp={forecast.minTemperaturePerWeek}
+                                maxTemp={forecast.maxTemperaturePerWeek}
+                                pressure={forecast.averagePressurePerWeek}
+                                sunExposure={forecast.averageSunExposurePerWeek}
+                                summary={forecast.weatherSummary}
+                            />
+                        ) : (
+                            <div className="error-message">
+                                An error occurred: {forecast.error}
+                            </div>
+                        )}
                     </div>
                 </div>
                 <div className="right-block">
                     <h1>Forecast result:</h1>
-                    {/*<pre>{forecast ? JSON.stringify(forecast, null, 2) : 'No data yet'}</pre>*/}
                     <div className="daily-cards">
                         <DailyCard></DailyCard>
                         <DailyCard></DailyCard>

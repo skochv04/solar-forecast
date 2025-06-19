@@ -1,34 +1,37 @@
 import React from 'react';
 import WeatherIcon from '../WeatherIcon/WeatherIcon';
 import WeatherInfo from '../WeatherInfo/WeatherInfo';
-import pressure from '../../assets/icons/pressure.svg';
-import exposure from '../../assets/icons/exposure.svg';
-import temperature from '../../assets/icons/temperature.svg';
-import withPrecipitation from '../../assets/icons/withPrecipitation.svg';
-import withoutPrecipitation from '../../assets/icons/withoutPrecipitation.svg';
+import pressureIcon from '../../assets/icons/pressure.svg';
+import exposureIcon from '../../assets/icons/exposure.svg';
+import temperatureIcon from '../../assets/icons/temperature.svg';
+import withPrecipitationIcon from '../../assets/icons/withPrecipitation.svg';
+import withoutPrecipitationIcon from '../../assets/icons/withoutPrecipitation.svg';
 import './WeeklySummaryCard.css';
 
-function WeeklySummaryCard() {
+function WeeklySummaryCard({ minTemp, maxTemp, pressure, sunExposure, summary }) {
+    const hours = Math.floor(sunExposure);
+    const minutes = Math.round((sunExposure - hours) * 60);
+
     return (
         <div className="weekly-weather-summary">
             <div className="weather-column">
                 <div className="weather-item">
-                    <WeatherIcon src={pressure} />
-                    <WeatherInfo label="Average pressure" value="NaN hPa" />
+                    <WeatherIcon src={pressureIcon} />
+                    <WeatherInfo label="Average pressure" value={`${pressure} hPa`} />
                 </div>
                 <div className="weather-item">
-                    <WeatherIcon src={exposure} />
-                    <WeatherInfo label="Average Sun exposure time" value="NaN h NaN min" />
+                    <WeatherIcon src={exposureIcon} />
+                    <WeatherInfo label="Average Sun exposure time" value={`${hours} h ${minutes} min`} />
                 </div>
             </div>
             <div className="weather-column">
                 <div className="weather-item">
-                    <WeatherIcon src={temperature} />
-                    <WeatherInfo label="Temperature Range" value="NaN ° - NaN °" />
+                    <WeatherIcon src={temperatureIcon} />
+                    <WeatherInfo label="Temperature Range" value={`${minTemp} ° - ${maxTemp} °`} />
                 </div>
                 <div className="weather-item">
-                    <WeatherIcon src={withPrecipitation} />
-                    <WeatherInfo label="Predicted Weather Conditions" value="Unknown" />
+                    <WeatherIcon src={summary === 'WITH_PRECIPITATION' ? withPrecipitationIcon : withoutPrecipitationIcon} />
+                    <WeatherInfo label="Predicted Weather Conditions" value={summary.replace('_', ' ').toLowerCase()} />
                 </div>
             </div>
         </div>
