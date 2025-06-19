@@ -1,0 +1,24 @@
+.daily-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-white);
+    padding: 14px 21px;
+    border-radius: 21px;
+    box-shadow: var(--shadow-card);
+    gap: 36px;
+}
+
+.daily-card-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    min-width: 0;
+}
+
+.daily-card-item.with-icon {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+}

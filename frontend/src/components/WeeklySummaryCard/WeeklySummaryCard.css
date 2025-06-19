@@ -1,0 +1,41 @@
+.weekly-weather-summary {
+    background-color: var(--color-white);
+    border-radius: 21px;
+    box-shadow: var(--shadow-card);
+    padding: 21px 27px 21px 27px;
+    display: flex;
+    gap: clamp(40px, 10vw, 90px);
+}
+
+.weather-column {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.weather-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.weather-icon-box {
+    width: 48px;
+    height: 48px;
+    background-color: var(--color-active);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.weather-icon {
+    width: 27px;
+    height: 27px;
+}
+
+.weather-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}

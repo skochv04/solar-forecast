@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import './ForecastPage.css';
+import DarkModeButton from "../../components/DarkModeButton/DarkModeButton";
+import WeeklySummaryCard from "../../components/WeeklySummaryCard/WeeklySummaryCard";
 import L from 'leaflet';
+import DailyCard from "../../components/DailyCard/DailyCard";
 
 const defaultCenter = [50.06, 19.95]; // Cracow
 
@@ -35,22 +39,45 @@ export default function ForecastPage() {
 
     return (
         <div className="container">
-            <h2>Click on the map to get forecast</h2>
+            <div className="dark-mode-container">
+                <DarkModeButton></DarkModeButton>
+            </div>
+            <div className="content">
+                <div className="left-block">
+                    <div className="map-block">
+                    <h1>Click on the map to get forecast</h1>
 
-            <MapContainer center={defaultCenter} zoom={6} style={{ height: '300px', width: '100%' }}>
-                <TileLayer
-                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-                <LocationMarker onClickMap={fetchForecast} />
-                {coords && (
-                    <Marker position={[coords.lat, coords.lon]} icon={L.icon({ iconUrl: "https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon.png", iconSize: [25, 41], iconAnchor: [12, 41] })} />
-                )}
-            </MapContainer>
+                    <MapContainer center={defaultCenter} zoom={6} style={{ height: '360px', width: '100%' }}>
+                        <TileLayer
+                            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                            url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        />
+                        <LocationMarker onClickMap={fetchForecast} />
+                        {coords && (
+                            <Marker position={[coords.lat, coords.lon]} icon={L.icon({ iconUrl: "https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon.png", iconSize: [25, 41], iconAnchor: [12, 41] })} />
+                        )}
+                    </MapContainer>
+                    </div>
 
-            <div style={{ marginTop: '20px' }}>
-                <h3>Forecast result:</h3>
-                <pre>{forecast ? JSON.stringify(forecast, null, 2) : 'No data yet'}</pre>
+                    <div className="summary-block">
+                        <h1>Weekly weather summary</h1>
+                        <WeeklySummaryCard></WeeklySummaryCard>
+                    </div>
+                </div>
+                <div className="right-block">
+                    <h1>Forecast result:</h1>
+                    {/*<pre>{forecast ? JSON.stringify(forecast, null, 2) : 'No data yet'}</pre>*/}
+                    <div className="daily-cards">
+                        <DailyCard></DailyCard>
+                        <DailyCard></DailyCard>
+                        <DailyCard></DailyCard>
+                        <DailyCard></DailyCard>
+                        <DailyCard></DailyCard>
+                        <DailyCard></DailyCard>
+                        <DailyCard></DailyCard>
+                    </div>
+
+                </div>
             </div>
         </div>
     );

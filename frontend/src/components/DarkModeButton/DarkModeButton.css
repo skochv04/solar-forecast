@@ -1,0 +1,23 @@
+.dark-mode-button {
+    width: 36px;
+    height: 36px;
+    background-color: transparent;
+    border: 2px solid var(--color-light-gray);
+    border-radius: 9px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+}
+
+.dark-mode-icon {
+    width: 14x;
+    height: 14px;
+    transition: transform 0.7s ease, opacity 0.7s ease;
+}
+
+.dark-mode-button:active .dark-mode-icon {
+    transform: rotate(180deg);
+}
