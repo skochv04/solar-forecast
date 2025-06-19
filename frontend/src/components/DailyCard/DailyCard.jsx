@@ -6,21 +6,22 @@ import pressure from '../../assets/icons/pressure.svg';
 
 import './DailyCard.css';
 
-function DailyCard() {
+function DailyCard({ date, dayName, energy, minTemp, maxTemp }) {
     return (
         <div className="daily-card">
             <div className="daily-card-item with-icon">
                 <WeatherIcon src={pressure} />
-                <WeatherInfo label="30.06.2025" value="Thursday" reverse={true}/>
+                <WeatherInfo label={new Date(date).toLocaleDateString("pl-PL")} value={dayName?.slice(0, 3)} reverse={true}/>
             </div>
             <div className="daily-card-item">
-                <WeatherInfo label="Estimated energy" value="NaN kWh" />
+                <WeatherInfo label="Estimated energy" value={`${energy ?? "NaN"} kWh`}/>
             </div>
             <div className="daily-card-item">
-                <WeatherInfo label="Temperature range" value="NaN ° - NaN °" />
+                <WeatherInfo label="Temperature range" value={`${minTemp ?? "NaN"}° - ${maxTemp ?? "NaN"}°`}/>
             </div>
         </div>
     );
 }
+
 
 export default DailyCard;

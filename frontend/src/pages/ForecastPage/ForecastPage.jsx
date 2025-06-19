@@ -22,6 +22,7 @@ function LocationMarker({ onClickMap }) {
 
 export default function ForecastPage() {
     const [forecast, setForecast] = useState(null);
+    const [dailyForecast, setDailyForecast] = useState(null);
     const [coords, setCoords] = useState(null);
     const fetchForecast = (lat, lon) => {
         const url = `${process.env.REACT_APP_API_URL}api/forecast/weekly/summary?latitude=${lat}&longitude=${lon}`;
@@ -35,7 +36,27 @@ export default function ForecastPage() {
                 console.error('Fetch error:', err);
                 setForecast({ error: 'Error connecting to backend' });
             });
+        fetchDailyForecast(lat, lon);
     };
+
+    const fetchDailyForecast = (lat, lon) => {
+        const url = `${process.env.REACT_APP_API_URL}api/forecast/weekly?latitude=${lat}&longitude=${lon}`;
+        fetch(url)
+            .then((res) => res.json())
+            .then((data) => {
+                console.log("Daily forecast data:", data);
+                setDailyForecast(data);
+            })
+            .catch((err) => {
+                console.error('Fetch daily error:', err);
+                setDailyForecast(null);
+            });
+    };
+
+    function getDayName(dateString) {
+        const date = new Date(dateString);
+        return date.toLocaleDateString('en-US', { weekday: 'long' });
+    }
 
     return (
         <div className="container">
@@ -61,31 +82,42 @@ export default function ForecastPage() {
 
                     <div className="summary-block">
                         <h1>Weekly weather summary</h1>
-                        {forecast && !forecast.error ? (
-                            <WeeklySummaryCard
-                                minTemp={forecast.minTemperaturePerWeek}
-                                maxTemp={forecast.maxTemperaturePerWeek}
-                                pressure={forecast.averagePressurePerWeek}
-                                sunExposure={forecast.averageSunExposurePerWeek}
-                                summary={forecast.weatherSummary}
-                            />
+                        {forecast ? (
+                            !forecast.error ? (
+                                <WeeklySummaryCard
+                                    minTemp={forecast.minTemperaturePerWeek}
+                                    maxTemp={forecast.maxTemperaturePerWeek}
+                                    pressure={forecast.averagePressurePerWeek}
+                                    sunExposure={forecast.averageSunExposurePerWeek}
+                                    summary={forecast.weatherSummary}
+                                />
+                            ) : (
+                                <div className="error-message">
+                                    An error occurred: {forecast.error}
+                                </div>
+                            )
                         ) : (
-                            <div className="error-message">
-                                An error occurred: {forecast.error}
-                            </div>
+                            <div>No data yet</div>
                         )}
                     </div>
                 </div>
                 <div className="right-block">
                     <h1>Forecast result:</h1>
                     <div className="daily-cards">
-                        <DailyCard></DailyCard>
-                        <DailyCard></DailyCard>
-                        <DailyCard></DailyCard>
-                        <DailyCard></DailyCard>
-                        <DailyCard></DailyCard>
-                        <DailyCard></DailyCard>
-                        <DailyCard></DailyCard>
+                        {dailyForecast && dailyForecast.dailyForecasts && dailyForecast.dailyForecasts.length > 0 ? (
+                            dailyForecast.dailyForecasts.map((day, idx) => (
+                                <DailyCard
+                                    key={idx}
+                                    date={day.date}
+                                    dayName={getDayName(day.date)}
+                                    energy={day.estimatedEnergy}
+                                    minTemp={day.minTemperaturePerDay}
+                                    maxTemp={day.maxTemperaturePerDay}
+                                />
+                            ))
+                        ) : (
+                            <p>No data yet</p>
+                        )}
                     </div>
 
                 </div>
