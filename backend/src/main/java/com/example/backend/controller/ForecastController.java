@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @Validated
 @RestController
 @RequestMapping("/api/forecast")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {"http://localhost:3000", "https://solar-forecast-4tk9.onrender.com"})
 public class ForecastController {
 
     private final ForecastService forecastService;
