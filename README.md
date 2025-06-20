@@ -20,6 +20,7 @@ Key features include:
 - **Frontend:** ReactJS + Leaflet.js
 - **API Source:** [Open-Meteo API](https://open-meteo.com/)
 
+![baner](baner.png)
 
 ## 🚀 How to Run the Application?
 
