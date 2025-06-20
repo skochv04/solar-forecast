@@ -13,6 +13,7 @@ Key features include:
 ✅ Weekly summary including average atmospheric pressure, sun exposure duration, temperature range, and a general weather condition overview  
 ✅ Fast and lightweight single-page application (SPA)  
 ✅ Built entirely as a frontend-backend integration, Solar Forecast is a concise yet functional example of real-time weather visualization  
+✅ A dark mode option is available
 
 **🛠️ Technologies Used:**
 
